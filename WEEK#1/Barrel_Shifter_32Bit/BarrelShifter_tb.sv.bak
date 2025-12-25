@@ -1,0 +1,89 @@
+module BarrelShifter_tb();
+reg [31:0] data_in;
+reg [4:0] shift_amt;
+reg dir;
+wire [31:0] data_out;
+
+reg [31:0] expected;
+
+integer i;
+integer pass = 0;
+integer fail = 0;
+
+BarrelShifter dut (data_out, data_in, shift_amt, dir);
+
+initial begin
+$display("_____Test Start_____");
+//self testing
+data_in = 32'd1;
+shift_amt = 5'd2;
+dir = 0;
+#10;
+expected = data_in << shift_amt;
+(check);
+
+data_in = 32'd1;
+shift_amt = 5'd2;
+dir = 1;
+#10;
+expected = data_in << shift_amt;
+(check);
+
+data_in = 32'd1;
+shift_amt = 5'd2;
+dir = 0;
+#10;
+expected = data_in >> shift_amt;
+(check);
+
+data_in = 32'd1;
+shift_amt = 5'd2;
+dir = 1;
+#10;
+expected = data_in >> shift_amt;
+(check);
+
+data_in = 32'd2;
+shift_amt = 5'd5;
+dir = 0;
+#10;
+expected = data_in << shift_amt;
+(check);
+
+data_in = 32'd2;
+shift_amt = 5'd5;
+dir = 1;
+#10;
+expected = data_in << shift_amt;
+(check);
+
+data_in = 32'd2;
+shift_amt = 5'd5;
+dir = 0;
+#10;
+expected = data_in >> shift_amt;
+(check);
+
+data_in = 32'd2;
+shift_amt = 5'd5;
+dir = 1;
+#10;
+expected = data_in >> shift_amt;
+(check);
+
+//Random Testig
+for(i = 0; i<10; i=i+1) begin
+data_in = $random % 32;
+dir = $radom % 2;
+#10;
+if (dir == 0)
+expected = data_in << shift_amt;
+else
+expected = data_i >> shift_amt;
+end
+#10
+
+$finish;
+
+end
+endmodule
