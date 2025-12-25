@@ -1,0 +1,156 @@
+$date
+	Tue Dec 23 14:22:30 2025
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_Encoder8_3 $end
+$var wire 3 ! out [2:0] $end
+$var reg 3 " expected_out [2:0] $end
+$var reg 8 # in [7:0] $end
+$var integer 32 $ fail [31:0] $end
+$var integer 32 % i [31:0] $end
+$var integer 32 & pass [31:0] $end
+$scope module dut $end
+$var wire 8 ' in [7:0] $end
+$var reg 3 ( out [2:0] $end
+$upscope $end
+$scope task check $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b0 (
+b1 '
+b1 &
+bx %
+b0 $
+b1 #
+bx "
+b0 !
+$end
+#10000
+b1 !
+b1 (
+b10 #
+b10 '
+b10 &
+b0 "
+#20000
+b10 !
+b10 (
+b100 #
+b100 '
+b11 &
+b1 "
+#30000
+b11 !
+b11 (
+b1000 #
+b1000 '
+b100 &
+b10 "
+#40000
+b100 !
+b100 (
+b10000 #
+b10000 '
+b101 &
+b11 "
+#50000
+b101 !
+b101 (
+b100000 #
+b100000 '
+b110 &
+b100 "
+#60000
+b110 !
+b110 (
+b1000000 #
+b1000000 '
+b111 &
+b101 "
+#70000
+b111 !
+b111 (
+b10000000 #
+b10000000 '
+b1000 &
+b110 "
+#80000
+b10 !
+b10 (
+b100100 #
+b100100 '
+b0 %
+b1001 &
+b111 "
+#90000
+b0 !
+b0 (
+b10000001 #
+b10000001 '
+b1 %
+b1010 &
+b10 "
+#100000
+b1001 #
+b1001 '
+b10 %
+b1011 &
+b0 "
+#110000
+b1100011 #
+b1100011 '
+b11 %
+b1100 &
+#120000
+b1101 #
+b1101 '
+b100 %
+b1101 &
+#130000
+b10001101 #
+b10001101 '
+b101 %
+b1110 &
+#140000
+b1100101 #
+b1100101 '
+b110 %
+b1111 &
+#150000
+b1 !
+b1 (
+b10010 #
+b10010 '
+b111 %
+b10000 &
+#160000
+b0 !
+b0 (
+b1 #
+b1 '
+b1000 %
+b10001 &
+b1 "
+#170000
+b1101 #
+b1101 '
+b1001 %
+b10010 &
+b0 "
+#180000
+b11 !
+b11 (
+b1000 #
+b1000 '
+b1010 %
+b10011 &
+#190000
+b1 $
