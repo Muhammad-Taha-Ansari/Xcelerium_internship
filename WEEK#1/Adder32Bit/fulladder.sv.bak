@@ -1,0 +1,12 @@
+module fulladder (s,cout,a,b,cin);
+output s, cout;
+input a,b,cin;
+wire w1, w2, w3;
+//Sum Circuit
+xor(s,a,b,cin);
+//Cout Circuit
+and(w1,a,b);
+and(w2,a,cin);
+and(w3,b,cin);
+or(cout,w1,w2,w3);
+endmodule

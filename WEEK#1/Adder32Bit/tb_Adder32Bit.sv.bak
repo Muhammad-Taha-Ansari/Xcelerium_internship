@@ -1,0 +1,68 @@
+module tb_Adder32Bit();
+
+reg [31:0] a, b;
+reg cin;
+wire [31:0] sum;
+wire cout;
+
+reg [31:0] expected_sum;
+reg expected_cout;
+
+integer i;
+
+initial begin
+a = 32'd0; b = 32'd0; cin = 0; #5;
+if ((sum === 32'd0) && (cout === 0))
+$display("PASS: 0 + 0 + 0");
+else
+$error("FAIL: 0 + 0 + 0");
+#10; 
+a = 32'd0; b = 32'd0; cin = 1; #5;
+if ((sum === 32'd1) && (cout === 0))
+$display("PASS: 0 + 0 + 1");
+else
+$error("FAIL: 0 + 0 + 1");
+#10; 
+a = 32'd1; b = 32'd0; cin = 0; #5;
+if ((sum === 32'd1) && (cout === 0))
+$display("PASS: 1 + 0 + 0");
+else
+$error("FAIL: 1 + 0 + 0");
+#10; 
+a = 32'd1; b = 32'd1; cin = 0; #5;
+if ((sum === 32'd2) && (cout === 0))
+$display("PASS: 1 + 1 + 0");
+else
+$error("FAIL: 1 + 1 + 0");
+#10; 
+a = 32'hFFFFFFFF; b = 32'd0; cin = 0; #5;
+if ((sum === 32'hFFFFFFFF) && (cout === 0))
+$display("PASS: FFFFFFFF + 0");
+else
+$error("FAIL: FFFFFFFF + 0");
+#10; 
+a = 32'hFFFFFFFF; b = 32'd1; cin = 0; #5;
+if ((sum === 32'd0) && (cout === 1))
+$display("PASS: Overflow FFFFFFFF + 1");
+else
+$error("FAIL: Overflow FFFFFFFF + 1");
+#10;
+
+{expected_cout, expected_sum} = a + b + cin;
+	 
+for (i = 0; i < 5; i = i + 1) begin
+#10;
+a = $urandom;
+b = $urandom;
+cin = $urandom % 2;
+#5;
+if (assert((sum === expected_sum) && (cout === expected_cout)))
+$display("PASS");
+else
+$error("FAIL");
+
+end
+
+Adder32Bit dut(sum, cout, a, b, cin);
+
+endmodule

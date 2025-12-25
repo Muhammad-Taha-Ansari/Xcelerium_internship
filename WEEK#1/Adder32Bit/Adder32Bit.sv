@@ -1,0 +1,43 @@
+module Adder32Bit(sum, cout, a, b, cin);
+parameter N = 32;
+output [N-1:0] sum;
+output cout;
+input [N-1:0] a;
+input [N-1:0] b;
+input cin;
+
+wire [N-2:0] c; 
+
+fulladder fa0  (.sum(sum[0]),  .cout(c[0]),  .a(a[0]),  .b(b[0]),  .cin(cin));
+fulladder fa1  (.sum(sum[1]),  .cout(c[1]),  .a(a[1]),  .b(b[1]),  .cin(c[0]));
+fulladder fa2  (.sum(sum[2]),  .cout(c[2]),  .a(a[2]),  .b(b[2]),  .cin(c[1]));
+fulladder fa3  (.sum(sum[3]),  .cout(c[3]),  .a(a[3]),  .b(b[3]),  .cin(c[2]));
+fulladder fa4  (.sum(sum[4]),  .cout(c[4]),  .a(a[4]),  .b(b[4]),  .cin(c[3]));
+fulladder fa5  (.sum(sum[5]),  .cout(c[5]),  .a(a[5]),  .b(b[5]),  .cin(c[4]));
+fulladder fa6  (.sum(sum[6]),  .cout(c[6]),  .a(a[6]),  .b(b[6]),  .cin(c[5]));
+fulladder fa7  (.sum(sum[7]),  .cout(c[7]),  .a(a[7]),  .b(b[7]),  .cin(c[6]));
+fulladder fa8  (.sum(sum[8]),  .cout(c[8]),  .a(a[8]),  .b(b[8]),  .cin(c[7]));
+fulladder fa9  (.sum(sum[9]),  .cout(c[9]),  .a(a[9]),  .b(b[9]),  .cin(c[8]));
+fulladder fa10 (.sum(sum[10]), .cout(c[10]), .a(a[10]), .b(b[10]), .cin(c[9]));
+fulladder fa11 (.sum(sum[11]), .cout(c[11]), .a(a[11]), .b(b[11]), .cin(c[10]));
+fulladder fa12 (.sum(sum[12]), .cout(c[12]), .a(a[12]), .b(b[12]), .cin(c[11]));
+fulladder fa13 (.sum(sum[13]), .cout(c[13]), .a(a[13]), .b(b[13]), .cin(c[12]));
+fulladder fa14 (.sum(sum[14]), .cout(c[14]), .a(a[14]), .b(b[14]), .cin(c[13]));
+fulladder fa15 (.sum(sum[15]), .cout(c[15]), .a(a[15]), .b(b[15]), .cin(c[14]));
+fulladder fa16 (.sum(sum[16]), .cout(c[16]), .a(a[16]), .b(b[16]), .cin(c[15]));
+fulladder fa17 (.sum(sum[17]), .cout(c[17]), .a(a[17]), .b(b[17]), .cin(c[16]));
+fulladder fa18 (.sum(sum[18]), .cout(c[18]), .a(a[18]), .b(b[18]), .cin(c[17]));
+fulladder fa19 (.sum(sum[19]), .cout(c[19]), .a(a[19]), .b(b[19]), .cin(c[18]));
+fulladder fa20 (.sum(sum[20]), .cout(c[20]), .a(a[20]), .b(b[20]), .cin(c[19]));
+fulladder fa21 (.sum(sum[21]), .cout(c[21]), .a(a[21]), .b(b[21]), .cin(c[20]));
+fulladder fa22 (.sum(sum[22]), .cout(c[22]), .a(a[22]), .b(b[22]), .cin(c[21]));
+fulladder fa23 (.sum(sum[23]), .cout(c[23]), .a(a[23]), .b(b[23]), .cin(c[22]));
+fulladder fa24 (.sum(sum[24]), .cout(c[24]), .a(a[24]), .b(b[24]), .cin(c[23]));
+fulladder fa25 (.sum(sum[25]), .cout(c[25]), .a(a[25]), .b(b[25]), .cin(c[24]));
+fulladder fa26 (.sum(sum[26]), .cout(c[26]), .a(a[26]), .b(b[26]), .cin(c[25]));
+fulladder fa27 (.sum(sum[27]), .cout(c[27]), .a(a[27]), .b(b[27]), .cin(c[26]));
+fulladder fa28 (.sum(sum[28]), .cout(c[28]), .a(a[28]), .b(b[28]), .cin(c[27]));
+fulladder fa29 (.sum(sum[29]), .cout(c[29]), .a(a[29]), .b(b[29]), .cin(c[28]));
+fulladder fa30 (.sum(sum[30]), .cout(c[30]), .a(a[30]), .b(b[30]), .cin(c[29]));
+fulladder fa31 (.sum(sum[31]), .cout(cout),  .a(a[31]), .b(b[31]), .cin(c[30]));
+endmodule
