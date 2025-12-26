@@ -1,0 +1,17 @@
+`timescale 1ns/1ps
+
+module tb_reg32 ();
+wire [31:0] q;
+reg [31:0] d;
+reg clk;
+reg rst_n;
+reg load;
+
+reg32 dut (q, d, clk, load, rst_n);
+
+//For GTKwave 
+initial begin
+$dumpfile ("reg32.vcd");
+$dumpfile (0, tb_reg32);
+end
+
