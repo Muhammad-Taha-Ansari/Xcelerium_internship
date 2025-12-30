@@ -1,0 +1,3 @@
+set_global_assignment -name VERILOG_FILE /home/taha_aka_beast/project_verilog/Adder32Bit/Adder32Bit_tb.sv
+set_global_assignment -name VERILOG_FILE /home/taha_aka_beast/project_verilog/Adder32Bit/Adder32Bit.sv
+set_global_assignment -name VERILOG_FILE /home/taha_aka_beast/project_verilog/Adder32Bit/fulladder.sv
