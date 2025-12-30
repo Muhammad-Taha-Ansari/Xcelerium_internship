@@ -1,0 +1,49 @@
+module tb_adder_tree;
+
+  logic        clk;
+  logic        EA, EB;
+  logic [7:0]  dataA, dataB;
+  logic [15:0] P;
+
+  // DUT
+  adder_tree dut (
+    .clk(clk),
+    .EA(EA),
+    .EB(EB),
+    .dataA(dataA),
+    .dataB(dataB),
+    .P(P)
+  );
+
+  // Clock generation
+  initial clk = 0;
+  always #5 clk = ~clk;
+
+  // Test + Assertion
+  initial begin
+    // Initialize
+    EA = 0; EB = 0;
+    dataA = 0; dataB = 0;
+
+    // Apply inputs
+    @(posedge clk);
+    EA = 1; EB = 1;
+    dataA = 8'd5;
+    dataB = 8'd3;
+
+    @(posedge clk);
+    EA = 0; EB = 0;
+
+    // Wait for multiplication to complete (8 cycles)
+    repeat (8) @(posedge clk);
+
+    // Assertion
+    assert (P == 16'd15)
+      $display("PASS ✅ : 5 x 3 = %0d", P);
+    else
+      $error("FAIL ❌ : Expected 15, Got %0d", P);
+
+    $finish;
+  end
+
+endmodule

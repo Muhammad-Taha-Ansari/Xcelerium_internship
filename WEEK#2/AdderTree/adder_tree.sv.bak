@@ -1,0 +1,37 @@
+module adder_tree (
+    input  logic        clk,
+    input  logic        EA, EB,
+    input  logic [7:0]  dataA, dataB,
+    output logic [15:0] P
+);
+
+    logic [7:0]  A, B;
+    logic [15:0] acc;        // accumulator
+    logic [3:0]  count;      // counts 0–7
+
+    // Register inputs
+    always_ff @(posedge clk) begin
+        if (EA) A <= dataA;
+        if (EB) B <= dataB;
+    end
+
+    // Sequential multiplication
+    always_ff @(posedge clk) begin
+        if (EA || EB) begin
+            acc   <= 16'b0;
+            count <= 4'd0;
+        end
+        else if (count < 8) begin
+            if (B[count])
+                acc <= acc + (A << count);
+            count <= count + 1;
+        end
+    end
+
+    // Register output
+    always_ff @(posedge clk) begin
+        if (count == 8)
+            P <= acc;
+    end
+
+endmodule
