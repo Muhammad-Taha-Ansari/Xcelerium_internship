@@ -15,18 +15,17 @@ logic [N-1:0] expected;
 integer pass_count = 0;
 integer fail_count = 0;
 integer i;
-integer m = 4;
+//integer m = 4;
 
 initial clk = 0;
 always #5 clk = ~clk;
 
 adder_tree #(M,N) dut (.P(P),.EA(EA),.EB(EB),.dataA(dataA),.dataB(dataB),.clk(clk));
 
-initial begin
-  $dumpfile("adder_tree.vcd");   // VCD file name
-  $dumpvars(0, tb_adder_tree);   // top module name
-end
-
+//initial begin  //for GTK-WAVE
+  //$dumpfile("adder_tree.vcd");   // VCD file name 
+  //$dumpvars(0, tb_adder_tree);   // top module name
+//end
 
 initial begin
 EA = 0; EB = 0; dataA = 0; dataB = 0; A_tb = 0; B_tb = 0; #10;
@@ -41,7 +40,8 @@ EA = 0; EB = 0;
 
 A_tb = dataA; B_tb = dataB;
 
-repeat (m) @(posedge clk); //repeat (2) @(posedge clk); //miss se poochna hai
+repeat (M) @(posedge clk); 
+repeat (2) @(posedge clk); //miss se poochna hai
 
 expected = A_tb * B_tb;
 
@@ -66,7 +66,7 @@ if (fail_count == 0)
 $display("OVERALL STATUS : ALL TESTS PASSED");
 else
 $display("OVERALL STATUS : SOME TESTS FAILED");
-$display("---------------------------------------------");
+$display("----------------------------------------------");
 
 $finish;
 end
